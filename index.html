@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeStefanis | Resume</title>
+  <title>Amy B. DeStefanis</title>
   <style>
     body {
       margin: 0;
@@ -45,18 +45,75 @@
       font-style: italic;
       margin-bottom: 1em;
     }
+    #login-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #login-screen form {
+      background: white;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    #login-screen input[type="password"] {
+      padding: 0.5em;
+      font-size: 1em;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    #login-screen button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="portrait">
-      <img src="AmyPortrait_CircularClean_CorrectAspect.png" alt="Portrait of Ab DeStefanis" />
-    </div>
-    <div class="intro">
-      <h1>Amy B. DeStefanis</h1>
-      <div class="tagline">MS/MIS &middot; Oracle OCP &middot; Senior Software Developer with Engineering Leadership Background</div>
-      <p>I started working with software back when we still argued about tabs vs. spaces in person. I've written specs on napkins, debugged COBOL on green screens, and led dev teams through modernization efforts and impossible timelines. Beat up, burnt out, bloodied — and still ticking.</p>
+  <div id="login-screen">
+    <form onsubmit="return checkPassword()">
+      <h2>Enter Password</h2>
+      <input type="password" id="password" placeholder="Password" required />
+      <br />
+      <button type="submit">Enter</button>
+    </form>
+  </div>
+
+  <div id="site-content" style="display:none;">
+    <div class="container">
+      <div class="portrait">
+        <img src="AmyPortrait_CircularClean_CorrectAspect.png" alt="Portrait of Amy B. DeStefanis" />
+      </div>
+      <div class="intro">
+        <h1>Amy B. DeStefanis</h1>
+        <div class="tagline">MS/MIS &middot; Oracle OCP &middot; Senior Software Developer with Engineering Leadership Background</div>
+        <p>I started working with software back when we still argued about tabs vs. spaces in person. I've written specs on napkins, debugged COBOL on green screens, and led dev teams through modernization efforts and impossible timelines. Beat up, burnt out, bloodied — and still ticking.</p>
+      </div>
     </div>
   </div>
+
+  <script>
+    const correctPassword = "gr8candid8";
+
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+      if (input === correctPassword) {
+        document.getElementById("login-screen").style.display = "none";
+        document.getElementById("site-content").style.display = "block";
+        return false;
+      } else {
+        alert("Incorrect password.");
+        return false;
+      }
+    }
+  </script>
 </body>
 </html>
